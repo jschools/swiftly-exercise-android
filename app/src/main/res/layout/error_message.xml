@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Jonathan Schooler
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~    http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<layout>
+
+    <data>
+
+        <import type="com.example.swiftly.exercise.android.BuildConfig" />
+
+        <import type="com.example.swiftly.exercise.android.common.data.LoadError" />
+
+        <import type="android.view.View" />
+
+        <variable
+            name="error"
+            type="LoadError" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/card_background"
+        android:elevation="@dimen/cardview_default_elevation"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{error.displayMessage}"
+            android:textAppearance="?android:textAppearanceLarge"
+            tools:text="@string/error_generic_display" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@{error.technicalMessage}"
+            android:visibility="@{BuildConfig.DEBUG ? View.VISIBLE : View.GONE}"
+            tools:text="@tools:sample/lorem[10]" />
+    </LinearLayout>
+</layout>
